@@ -27,7 +27,6 @@ export type StateType = {
 	}
 }
 
-
 let state: StateType = {
 	profilePage: {
 		posts: [
