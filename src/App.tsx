@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import NavBar from "./components/Navbar/NavBar";
@@ -8,12 +8,12 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import {StateType} from "./Redux/state";
+import {ActionsType, StateType, StoreType} from "./Redux/state";
 
 type AppPropsType = {
 	state: StateType
-	addPost: () => void
-	updateNewPostText: (newText: string) => void
+	dispatch: (action: ActionsType) => void
+	store: StoreType
 }
 
 const App = (props: AppPropsType) => {
@@ -25,11 +25,10 @@ const App = (props: AppPropsType) => {
 				<NavBar/>
 				<div className="app-wrapper-content">
 
-					<Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+					<Route path="/dialogs" render={() => <Dialogs store={props.store}/>}/>
 					<Route path="/profile" render={() => <Profile
 						profilePage={props.state.profilePage}
-						addPost={props.addPost}
-						updateNewPostText={props.updateNewPostText}
+						dispatch={props.dispatch.bind(props.store)}
 					/>}
 					/>
 					<Route path="/news" component={News}/>
