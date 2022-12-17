@@ -42,8 +42,8 @@ export type StoreType = {
 	_state: StateType
 	_callSubscriber: (action: StateType) => void
 
-	getState: () => void
-	subscribe: (observer: () => void) => void
+	getState: () => StateType
+	subscribe: (observer: (state: StateType) => void) => void
 
 	dispatch: (action: ActionsType) => void
 }
@@ -62,7 +62,7 @@ const store: StoreType = {
 				{id: 1, message: 'Hello', likesCount: 11},
 				{id: 2, message: 'It is my first post', likesCount: 22}
 			],
-			newPostText: 'hello'
+			newPostText: ''
 		},
 		dialogsPage: {
 			dialogs: [
@@ -80,7 +80,7 @@ const store: StoreType = {
 				{id: 4, message: 'Yo'},
 				{id: 5, message: 'Buy'},
 			],
-			newMessageBody: 'hello'
+			newMessageBody: ''
 		},
 		sidebar: {}
 	},
@@ -105,5 +105,7 @@ const store: StoreType = {
 	}
 }
 
-// window.store = store
+// @ts-ignore
+window.store = store;
+
 export default store

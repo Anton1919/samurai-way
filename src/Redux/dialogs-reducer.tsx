@@ -27,6 +27,7 @@ export const sendMessageCreator = () => {
 }
 
 export const updateNewMessageBodyCreator = (body: string) => {
+	console.log({ body })
 	return {
 		type: UPDATE_NEW_MESSAGE_BODY,
 		body: body

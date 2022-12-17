@@ -17,7 +17,7 @@ type AppPropsType = {
 }
 
 const App = (props: AppPropsType) => {
-
+	console.log(props)
 	return (
 		<BrowserRouter>
 			<div className="app-wrapper">

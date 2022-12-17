@@ -10,7 +10,7 @@ type DialogsPropsType = {
 }
 
 const Dialogs = (props: DialogsPropsType) => {
-	const store = props.store._state.dialogsPage
+	const store = props.store.getState().dialogsPage
 
 	const dialogsElements = store.dialogs.map(el =>
 		<DialogItem key={el.id} name={el.name} id={el.id}/>
@@ -19,10 +19,12 @@ const Dialogs = (props: DialogsPropsType) => {
 		<Message key={el.id} message={el.message}/>
 	)
 	const newMessageBody = store.newMessageBody
+	console.log({store, newMessageBody})
 
 	const onSendMessageClick = () => {
 		props.store.dispatch(sendMessageCreator())
 	}
+
 	const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		const body = e.currentTarget.value
 		props.store.dispatch(updateNewMessageBodyCreator(body))
