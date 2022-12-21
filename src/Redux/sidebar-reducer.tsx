@@ -1,8 +1,8 @@
-const sidebarReducer = () => {
+const sidebarReducer = (state: any, action: any) => {
 
 
 
-	return
+	return 1
 }
 
 export default sidebarReducer

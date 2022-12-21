@@ -1,5 +1,6 @@
 import profileReducer, {addPostActionCreator, upDateNewPostTextActionCreator} from "./profile-reducer";
 import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 export type PostsType = {
 	id: number
@@ -41,10 +42,8 @@ export type StateType = {
 export type StoreType = {
 	_state: StateType
 	_callSubscriber: (action: StateType) => void
-
 	getState: () => StateType
 	subscribe: (observer: (state: StateType) => void) => void
-
 	dispatch: (action: ActionsType) => void
 }
 
@@ -99,7 +98,7 @@ const store: StoreType = {
 
 		this._state.profilePage = profileReducer(this._state.profilePage, action)
 		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
-		// this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+		this._state.sidebar = sidebarReducer(this._state.sidebar, action)
 
 		this._callSubscriber(this._state)
 	}

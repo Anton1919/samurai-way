@@ -3,14 +3,18 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/dialogs-reducer";
-import {StoreType} from "../../Redux/state";
+import {DialogPageType, StoreType} from "../../Redux/store";
 
 type DialogsPropsType = {
-	store: StoreType
+	// store: StoreType
+	updateNewMessageBody: (body: string) => void
+	sendMessage: () => void
+	dialogsPage: DialogPageType
 }
 
 const Dialogs = (props: DialogsPropsType) => {
-	const store = props.store.getState().dialogsPage
+
+	const store = props.dialogsPage
 
 	const dialogsElements = store.dialogs.map(el =>
 		<DialogItem key={el.id} name={el.name} id={el.id}/>
@@ -22,12 +26,13 @@ const Dialogs = (props: DialogsPropsType) => {
 	console.log({store, newMessageBody})
 
 	const onSendMessageClick = () => {
-		props.store.dispatch(sendMessageCreator())
+		props.sendMessage()
 	}
 
 	const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		const body = e.currentTarget.value
-		props.store.dispatch(updateNewMessageBodyCreator(body))
+		props.updateNewMessageBody(body)
+		// props.store.dispatch(updateNewMessageBodyCreator(body))
 	}
 
 	return (
@@ -42,7 +47,6 @@ const Dialogs = (props: DialogsPropsType) => {
 						<textarea value={newMessageBody}
 											placeholder="Enter Text"
 											onChange={onNewMessageChange}>
-
 						</textarea>
 					</div>
 					<div>
