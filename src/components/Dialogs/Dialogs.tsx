@@ -2,8 +2,7 @@ import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/dialogs-reducer";
-import {DialogPageType, StoreType} from "../../Redux/store";
+import {DialogPageType} from "../../Redux/store";
 
 type DialogsPropsType = {
 	// store: StoreType
@@ -23,7 +22,6 @@ const Dialogs = (props: DialogsPropsType) => {
 		<Message key={el.id} message={el.message}/>
 	)
 	const newMessageBody = store.newMessageBody
-	console.log({store, newMessageBody})
 
 	const onSendMessageClick = () => {
 		props.sendMessage()
