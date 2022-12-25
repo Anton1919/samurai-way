@@ -2,10 +2,7 @@ import React from 'react';
 import {addPostActionCreator, upDateNewPostTextActionCreator} from "../../../Redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import StoreContext from "../../../Store-Context";
-//
-// type MyPostPropsType = {
-// 	store: StoreType
-// }
+
 
 const MyPostsContainer = () => {
 
