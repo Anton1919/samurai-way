@@ -5,9 +5,8 @@ import {PostsType} from "../../../Redux/store";
 
 type MyPostPropsType = {
 	posts: PostsType[]
-	// dispatch: (action: ActionsType) => void
 	newPostText: string
-	updateNewPostText: (text: string) => void
+	updateNewPostText: (e: string) => void
 	addPost: () => void
 }
 
@@ -20,14 +19,11 @@ const MyPosts = (props: MyPostPropsType) => {
 
 	const onAddPost = () => {
 		 props.addPost()
-		//  props.dispatch(addPostActionCreator())
 	}
 
 	const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		const text = e.currentTarget.value
-		 props.updateNewPostText(text)
-		// let action = upDateNewPostTextActionCreator(text)
-		// props.dispatch(action)
+		// const text = e.currentTarget.value
+		 props.updateNewPostText(e.currentTarget.value)
 	}
 
 	return (

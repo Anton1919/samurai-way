@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Users.module.css'
+import {UsersPropType} from "./UsersContainer";
 
-const Users = (props) => {
+const Users = (props: UsersPropType) => {
 
 	if(props.users.length === 0) {
 		props.setUsers([

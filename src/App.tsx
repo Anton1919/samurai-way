@@ -8,14 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
-import Users from "./components/Users/Users";
 import UsersContainer from "./components/Users/UsersContainer";
-
-// type AppPropsType = {
-// 	state: RootStoreType
-// 	dispatch: (action: ActionsType) => void
-// 	store: StoreType
-// }
 
 const App = () => {
 	return (

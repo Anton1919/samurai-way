@@ -1,16 +1,31 @@
+import {ActionsType} from "./store";
+
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET-USERS"
 
-const initialState = {
-	users: []
+export type UserType = {
+	id: number
+	photoUrl: string
+	followed: boolean
+	fullName: string
+	status: string
+	location: { city: string, country: string }
 }
 
-const usersReducer = (state = initialState, action) => {
+export type InitialStateType = {
+	users: UserType[]
+}
+
+const initialState: InitialStateType = {
+	users: []
+}
+// type ActionType = ReturnType<typeof followAC> | ReturnType<typeof unFollowAC> | ReturnType<typeof setUsersAC>
+
+const usersReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
 
 	switch (action.type) {
 		case FOLLOW:
-
 			return {
 				...state,
 				users: state.users.map(u => {
@@ -41,6 +56,11 @@ const usersReducer = (state = initialState, action) => {
 }
 export default usersReducer
 
-export const followAC = (userId) => ({type: FOLLOW, userId})
-export const unFollowAC = (userId) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users) => ({type: SET_USERS, users})
+export const followAC = (userId: number) => {
+	return {
+		type: FOLLOW,
+		userId: userId
+	} as const
+}
+export const unFollowAC = (userId: number) => ({type: UNFOLLOW, userId} as const)
+export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users} as const)

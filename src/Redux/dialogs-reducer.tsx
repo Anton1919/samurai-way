@@ -22,6 +22,9 @@ const initialState: DialogPageType = {
 	newMessageBody: ''
 }
 
+
+// type ActionType =  ReturnType<typeof updateNewMessageBodyCreator> |ReturnType<typeof sendMessageCreator>
+
 const dialogsReducer = (state: DialogPageType = initialState, action: ActionsType) => {
 
 	switch (action.type) {

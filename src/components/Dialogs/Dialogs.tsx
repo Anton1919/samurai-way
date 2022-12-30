@@ -5,16 +5,14 @@ import Message from "./Message/Message";
 import {DialogPageType} from "../../Redux/store";
 
 type DialogsPropsType = {
-	// store: StoreType
 	updateNewMessageBody: (body: string) => void
 	sendMessage: () => void
 	dialogsPage: DialogPageType
 }
 
 const Dialogs = (props: DialogsPropsType) => {
-
+	console.log('props', props)
 	const store = props.dialogsPage
-
 	const dialogsElements = store.dialogs.map(el =>
 		<DialogItem key={el.id} name={el.name} id={el.id}/>
 	)
