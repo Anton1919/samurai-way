@@ -8,6 +8,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
+import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 // type AppPropsType = {
 // 	state: RootStoreType
@@ -24,8 +26,8 @@ const App = () => {
 				<div className="app-wrapper-content">
 
 					<Route path="/dialogs" render={() => <DialogsContainer/>}/>
-					<Route path="/profile" render={() => <Profile/>}
-					/>
+					<Route path="/profile" render={() => <Profile/>}/>
+					<Route path="/users" render={() => <UsersContainer/> }/>
 					<Route path="/news" component={News}/>
 					<Route path="/music" component={Music}/>
 					<Route path="/settings" component={Settings}/>
