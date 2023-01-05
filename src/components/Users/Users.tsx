@@ -1,65 +1,59 @@
-import React from 'react';
-import s from './Users.module.css'
+import React from "react";
+import s from "./Users.module.css";
+import userPhoto from "../../assets/img/user.jpg";
+import axios from "axios";
 import {UsersPropType} from "./UsersContainer";
+import {UserType} from "../../Redux/users-reducer";
 
-const Users = (props: UsersPropType) => {
 
-	if(props.users.length === 0) {
-		props.setUsers([
-			{
-				id: 1,
-				photoUrl: 'https://img.freepik.com/free-vector/cute-cat-holding-fish-cartoon-icon-illustration-animal-food-icon-concept-isolated-flat-cartoon-style_138676-2171.jpg?w=2000',
-				followed: false, fullName: "Anton", status: "I am a boss", location: {city: "Minsk", country: "Belarus"}
-			},
-			{
-				id: 2,
-				photoUrl: 'https://img.freepik.com/free-vector/cute-cat-holding-fish-cartoon-icon-illustration-animal-food-icon-concept-isolated-flat-cartoon-style_138676-2171.jpg?w=2000',
-				followed: true,
-				fullName: "Vasya",
-				status: "I am a boss",
-				location: {city: "Moscow", country: "Russia"}
-			},
-			{
-				id: 3,
-				photoUrl: 'https://img.freepik.com/free-vector/cute-cat-holding-fish-cartoon-icon-illustration-animal-food-icon-concept-isolated-flat-cartoon-style_138676-2171.jpg?w=2000',
-				followed: false,
-				fullName: "Petya",
-				status: "I am a boss",
-				location: {city: "Kiev", country: "Ukraine"}
-			},
-		])
-	}
+type ResponceType = {
+	error: null|string
+	items: UserType[]
+	totalCount: number
+}
 
-	return (
-		<div>
-			{props.users.map(u => <div key={u.id}>
+
+class Users extends React.Component<UsersPropType> {
+
+		componentDidMount() {
+			axios.get<ResponceType>("https://social-network.samuraijs.com/api/1.0/users")
+				.then((response) => {
+					console.log(response)
+					this.props.setUsers(response.data.items)
+				})
+		}
+
+	render() {
+		return (
+			<div>
+				{this.props.users.map((u, index) => <div key={u.id}>
 				<span>
 					<div>
-						<img className={s.userPhoto} src={u.photoUrl}/>
+						<img className={s.userPhoto} src={u.photos.small != null ? u.photos.small : userPhoto}/>
 					</div>
 					<div>
 						{u.followed
-							? <button onClick={() => {
-								props.unFollow(u.id)
-							}}>Unfollow</button>
-							: <button onClick={() => props.follow(u.id)}>Follow</button>}
+							? <button onClick={() => this.props.unFollow(u.id)}>Unfollow</button>
+							: <button onClick={() => this.props.follow(u.id)}>Follow</button>}
 					</div>
 				</span>
 
-				<span>
 					<span>
-						<div>{u.fullName}</div>
+					<span>
+						<div>{u.name}</div>
 						<div>{u.status}</div>
 					</span>
 					<span>
-						<div>{u.location.country}</div>
-						<div>{u.location.city}</div>
+						<div>{'u.location.country'}</div>
+						<div>{'u.location.city'}</div>
 					</span>
 				</span>
 
-			</div>)}
-		</div>
-	);
-};
+				</div>)}
+			</div>
+		);
+	}
 
-export default Users;
+}
+
+export default Users

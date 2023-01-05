@@ -4,13 +4,22 @@ const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET-USERS"
 
+// export type UserType = {
+// 	id: number
+// 	photoUrl: string
+// 	followed: boolean
+// 	fullName: string
+// 	status: string
+// 	location: { city: string, country: string }
+// }
+
 export type UserType = {
-	id: number
-	photoUrl: string
 	followed: boolean
-	fullName: string
-	status: string
-	location: { city: string, country: string }
+	name: string
+	id: number
+	uniqueUrlName: null
+	photos: {small: null, large: null}
+	status: null
 }
 
 export type InitialStateType = {
