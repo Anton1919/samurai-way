@@ -12,7 +12,6 @@ type ResponceType = {
 	totalCount: number
 }
 
-
 class Users extends React.Component<UsersPropType> {
 
 		componentDidMount() {
