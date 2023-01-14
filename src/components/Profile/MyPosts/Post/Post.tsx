@@ -21,4 +21,5 @@ const Post = (props: PostsPropsType) => {
 	);
 };
 
+
 export default Post;
