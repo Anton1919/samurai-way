@@ -1,7 +1,7 @@
 import profileReducer, {addPostActionCreator, upDateNewPostTextActionCreator} from "./profile-reducer";
 import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
-import {followAC, setUsersAC, unFollowAC} from "./users-reducer";
+import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unFollowAC} from "./users-reducer";
 
 export type PostsType = {
 	id: number
@@ -52,7 +52,8 @@ export type ActionsType =
 	| ReturnType<typeof setUsersAC>
 	| ReturnType<typeof sendMessageCreator>
 	| ReturnType<typeof updateNewMessageBodyCreator>
-
+	| ReturnType<typeof setCurrentPageAC>
+	| ReturnType<typeof setTotalUsersCountAC>
 
 const store: StoreType = {
 	_state: {
