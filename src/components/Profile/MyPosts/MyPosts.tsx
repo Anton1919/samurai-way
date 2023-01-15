@@ -10,7 +10,6 @@ type MyPostPropsType = {
 	addPost: () => void
 }
 
-
 const MyPosts = (props: MyPostPropsType) => {
 
 	const postsElemets = props.posts.map(el =>
@@ -22,7 +21,6 @@ const MyPosts = (props: MyPostPropsType) => {
 	}
 
 	const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		// const text = e.currentTarget.value
 		 props.updateNewPostText(e.currentTarget.value)
 	}
 
