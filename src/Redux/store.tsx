@@ -1,4 +1,4 @@
-import profileReducer, {addPostActionCreator, upDateNewPostTextActionCreator} from "./profile-reducer";
+import profileReducer, {addPostActionCreator, setUserProfile, upDateNewPostTextActionCreator} from "./profile-reducer";
 import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import {
@@ -32,6 +32,7 @@ export type DialogPageType = {
 export type ProfilePageType = {
 	posts: PostsType[]
 	newPostText: string
+	profile: null
 }
 
 export type StateType = {
@@ -62,8 +63,9 @@ export type ActionsType =
 	| ReturnType<typeof setCurrentPage>
 	| ReturnType<typeof setTotalUsersCount>
 | ReturnType<typeof toggleIsFetching>
+| ReturnType<typeof setUserProfile>
 
-const store: StoreType = {
+/*const store: StoreType = {
 	_state: {
 		profilePage: {
 			posts: [
@@ -111,9 +113,10 @@ const store: StoreType = {
 
 		this._callSubscriber(this._state)
 	}
-}
+}*/
 
 // @ts-ignore
 window.store = store;
 
-export default store
+/*
+export default store*/

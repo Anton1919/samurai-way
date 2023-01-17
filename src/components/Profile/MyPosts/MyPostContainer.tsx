@@ -7,8 +7,8 @@ import {Dispatch} from "redux";
 
 const mapStateToProps = (state: AppStateType) => {
 	return {
-		posts: state.profileReducer.posts,
-		newPostText: state.profileReducer.newPostText
+		posts: state.profilePage.posts,
+		newPostText: state.profilePage.newPostText
 	}
 }
 
