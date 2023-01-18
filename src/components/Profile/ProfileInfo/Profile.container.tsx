@@ -33,7 +33,7 @@ type PathParamsType = {
 }
 
 type MapStatePropsType = {
-	profile: ProfileDataType
+	profile: ProfileDataType | null
 }
 type MapDispatchPropsType = {
 	setUserProfile: (profile: ProfileDataType) => void
@@ -49,15 +49,13 @@ class ProfileContainer extends React.Component<PropsType> {
 		if (!userId) {
 			userId = '2'
 		}
-		axios.get<PropsType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+		axios.get<ProfileDataType>(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
 			.then((response) => {
-				console.log(response)
 				this.props.setUserProfile(response.data)
 			})
 	}
 
 	render() {
-		console.log(this.props.profile)
 		return (<div>
 				<Profile {...this.props} profile={this.props.profile}/>
 			</div>
