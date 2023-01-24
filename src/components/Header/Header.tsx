@@ -7,10 +7,7 @@ type PropsType = {
 	login: string | null
 }
 
-
 const Header = (props: PropsType) => {
-	console.log(props)
-
 	return (
 		<header className={s.header}>
 			<img
