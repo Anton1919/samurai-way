@@ -1,4 +1,5 @@
 import {ActionsType, PostsType, ProfilePageType} from "./store";
+import {MapStatePropsType, OwnPropsType, ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
 
 const ADD_POST = "ADD-POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
@@ -60,6 +61,10 @@ export const upDateNewPostTextActionCreator = (text: string) => {
 	} as const
 }
 
-export const setUserProfile = (profile: any) => ({type: SET_USER_PROFILE, profile} as const)
+export const setUserProfile = (profile: ProfileDataType) => {
+	return {
+		type: SET_USER_PROFILE, profile
+	} as const
+}
 
 export default profileReducer

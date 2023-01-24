@@ -32,7 +32,7 @@ type PathParamsType = {
 	userId: string
 }
 
-type MapStatePropsType = {
+export type MapStatePropsType = {
 	profile: ProfileDataType | null
 }
 type MapDispatchPropsType = {

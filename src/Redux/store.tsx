@@ -1,14 +1,8 @@
-import profileReducer, {addPostActionCreator, setUserProfile, upDateNewPostTextActionCreator} from "./profile-reducer";
-import dialogsReducer, {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
-import {
-	follow,
-	setCurrentPage,
-	setTotalUsersCount,
-	setUsers,
-	toggleIsFetching,
-	unFollow
-} from "./users-reducer";
+import {addPostActionCreator, setUserProfile, upDateNewPostTextActionCreator} from "./profile-reducer";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
+import {follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unFollow} from "./users-reducer";
+import {setAuthUserData} from "./auth-reducer";
+import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
 
 export type PostsType = {
 	id: number
@@ -32,7 +26,7 @@ export type DialogPageType = {
 export type ProfilePageType = {
 	posts: PostsType[]
 	newPostText: string
-	profile: null
+	profile: null | ProfileDataType
 }
 
 export type StateType = {
@@ -62,8 +56,9 @@ export type ActionsType =
 	| ReturnType<typeof updateNewMessageBodyCreator>
 	| ReturnType<typeof setCurrentPage>
 	| ReturnType<typeof setTotalUsersCount>
-| ReturnType<typeof toggleIsFetching>
-| ReturnType<typeof setUserProfile>
+	| ReturnType<typeof toggleIsFetching>
+	| ReturnType<typeof setUserProfile>
+	| ReturnType<typeof setAuthUserData>
 
 /*const store: StoreType = {
 	_state: {
