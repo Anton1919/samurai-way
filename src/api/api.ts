@@ -6,13 +6,30 @@ type getUsersResponseType = {
 	items: UserType[]
 	totalCount: number
 }
-type authMeResponseType = {
+type followResponseType = {
 	data: { id: number, email: string, login: string }
 	fieldsErrors: [] | string[]
 	resultCode: number
 	messages: [] | string[]
 }
-
+type unFollowResponseType = {
+	data: { id: number, email: string, login: string }
+	fieldsErrors: [] | string[]
+	resultCode: number
+	messages: [] | string[]
+}
+//
+// type DataFollowedType = {
+// 	id: number,
+// 	email: string,
+// 	login: string
+// }
+// type ResponseGenericType<T> = {
+// 	data: T
+// 	fieldsErrors: [] | string[]
+// 	resultCode: number
+// 	messages: [] | string[]
+// }
 
 const instance = axios.create({
 	withCredentials: true,
@@ -25,13 +42,16 @@ export const usersAPI = {
 		return instance.get<getUsersResponseType>
 		(`users?page=${currentPage}&count=${pageSize}`)
 			.then((response) => response.data)
+	},
+
+	followToUser(userId: number) {
+		return instance.post<followResponseType>(`follow/${userId}`)
+			.then((response) => response.data)
+	},
+
+	unfollowFromUser(userId: number) {
+		return instance.delete<unFollowResponseType>(`follow/${userId}`,)
+			.then((response) => response.data)
 	}
 }
 
-
-// export const authMe = () => {
-// 	instance.get<authMeResponseType>(`auth/me`, )
-// }
-// export const authLogin = () => {
-// 	instance.post<any>(`auth/login`, {}, )
-// }
