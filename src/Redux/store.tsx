@@ -1,6 +1,14 @@
 import {addPostActionCreator, setUserProfile, upDateNewPostTextActionCreator} from "./profile-reducer";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
-import {follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unFollow} from "./users-reducer";
+import {
+	follow,
+	setCurrentPage,
+	setTotalUsersCount,
+	setUsers,
+	toggleFollowingProgress,
+	toggleIsFetching,
+	unFollow
+} from "./users-reducer";
 import {setAuthUserData} from "./auth-reducer";
 import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
 
@@ -59,6 +67,7 @@ export type ActionsType =
 	| ReturnType<typeof toggleIsFetching>
 	| ReturnType<typeof setUserProfile>
 	| ReturnType<typeof setAuthUserData>
+	| ReturnType<typeof toggleFollowingProgress>
 
 /*const store: StoreType = {
 	_state: {
