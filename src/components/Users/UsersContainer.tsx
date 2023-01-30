@@ -12,7 +12,6 @@ import {AppStateType} from "../../Redux/redux-store";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 
-
 type MapStatePropsType = {
 	users: UserType[]
 	pageSize: number
@@ -20,12 +19,14 @@ type MapStatePropsType = {
 	currentPage: number
 	isFetching: boolean
 	followingInProgress: number[]
+
 }
 type MapDispatchPropsType = {
 	follow: (userId: number) => void
 	unfollow: (userId: number) => void
 	setCurrentPage: (pageNumber: number) => void
 	toggleFollowingProgress: (isFetching: boolean, userId: number) => void
+	getUsers: (pageNum: number, pageSize: number) => void
 }
 export type UsersPropType = MapStatePropsType & MapDispatchPropsType
 

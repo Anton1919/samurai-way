@@ -7,7 +7,7 @@ import {
 	setUsers,
 	toggleFollowingProgress,
 	toggleIsFetching,
-	unFollow
+	unfollow
 } from "./users-reducer";
 import {setAuthUserData} from "./auth-reducer";
 import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
@@ -58,7 +58,7 @@ export type ActionsType =
 	ReturnType<typeof addPostActionCreator>
 	| ReturnType<typeof upDateNewPostTextActionCreator>
 	| ReturnType<typeof follow>
-	| ReturnType<typeof unFollow>
+	| ReturnType<typeof unfollow>
 	| ReturnType<typeof setUsers>
 	| ReturnType<typeof sendMessageCreator>
 	| ReturnType<typeof updateNewMessageBodyCreator>

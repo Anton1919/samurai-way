@@ -1,5 +1,6 @@
 import {ActionsType} from "./store";
 import {usersAPI} from "../api/api";
+import {Dispatch} from "redux";
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
@@ -107,7 +108,7 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number) => 
 } as const)
 
 export const getUsers = (currentPage: number, pageSize: number) => {
-	return (dispatch) => {
+	return (dispatch: Dispatch<ActionsType>) => {
 		dispatch(toggleIsFetching(true))
 		usersAPI.getUsers(currentPage, pageSize)
 			.then((data) => {
@@ -119,7 +120,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
 }
 
 export const follow = (userId: number) => {
-	return (dispatch) => {
+	return (dispatch: Dispatch<ActionsType>) => {
 		dispatch(toggleFollowingProgress(true, userId))
 
 		usersAPI.follow(userId)
@@ -133,7 +134,7 @@ export const follow = (userId: number) => {
 }
 
 export const unfollow = (userId: number) => {
-	return (dispatch) => {
+	return (dispatch: Dispatch<ActionsType>) => {
 		dispatch(toggleFollowingProgress(true, userId))
 
 		usersAPI.unfollow(userId)
