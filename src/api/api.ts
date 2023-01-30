@@ -44,12 +44,12 @@ export const usersAPI = {
 			.then((response) => response.data)
 	},
 
-	followToUser(userId: number) {
+	follow(userId: number) {
 		return instance.post<followResponseType>(`follow/${userId}`)
 			.then((response) => response.data)
 	},
 
-	unfollowFromUser(userId: number) {
+	unfollow(userId: number) {
 		return instance.delete<unFollowResponseType>(`follow/${userId}`,)
 			.then((response) => response.data)
 	}
