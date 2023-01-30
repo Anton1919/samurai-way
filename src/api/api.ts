@@ -1,5 +1,7 @@
 import axios from "axios";
 import {UserType} from "../Redux/users-reducer";
+import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
+import {ResponseHeaderType} from "../components/Header/HeaderContainer";
 
 type getUsersResponseType = {
 	error: null | string
@@ -52,6 +54,17 @@ export const usersAPI = {
 	unfollow(userId: number) {
 		return instance.delete<unFollowResponseType>(`follow/${userId}`,)
 			.then((response) => response.data)
+	},
+
+	getProfile( userId: string) {
+		return instance.get<ProfileDataType>(`profile/` + userId)
 	}
 }
+
+export const authAPI = {
+	me() {
+		return instance.get<ResponseHeaderType>(`auth/me`)
+	}
+}
+
 
