@@ -50,7 +50,7 @@ const Users = (props: UsersPropsType) => {
 							</button>
 
 							: <button disabled={props.followingInProgress.some(id => id === u.id)}
-												onClick={() => props.follow}>Follow</button>}
+												onClick={() => props.follow(u.id)}>Follow</button>}
 					</div>
 				</span>
 

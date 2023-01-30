@@ -1,13 +1,13 @@
 import {addPostActionCreator, setUserProfile, upDateNewPostTextActionCreator} from "./profile-reducer";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
 import {
-	follow,
+	followSuccess,
 	setCurrentPage,
 	setTotalUsersCount,
 	setUsers,
 	toggleFollowingProgress,
 	toggleIsFetching,
-	unfollow
+	unFollowSuccess
 } from "./users-reducer";
 import {setAuthUserData} from "./auth-reducer";
 import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
@@ -57,8 +57,8 @@ export type StoreType = {
 export type ActionsType =
 	ReturnType<typeof addPostActionCreator>
 	| ReturnType<typeof upDateNewPostTextActionCreator>
-	| ReturnType<typeof follow>
-	| ReturnType<typeof unfollow>
+	| ReturnType<typeof followSuccess>
+	| ReturnType<typeof unFollowSuccess>
 	| ReturnType<typeof setUsers>
 	| ReturnType<typeof sendMessageCreator>
 	| ReturnType<typeof updateNewMessageBodyCreator>
