@@ -20,18 +20,6 @@ type unFollowResponseType = {
 	resultCode: number
 	messages: [] | string[]
 }
-//
-// type DataFollowedType = {
-// 	id: number,
-// 	email: string,
-// 	login: string
-// }
-// type ResponseGenericType<T> = {
-// 	data: T
-// 	fieldsErrors: [] | string[]
-// 	resultCode: number
-// 	messages: [] | string[]
-// }
 
 const instance = axios.create({
 	withCredentials: true,
