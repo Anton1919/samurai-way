@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ComponentType} from 'react';
 import {connect} from "react-redux";
 import {
 	follow,
@@ -11,6 +11,8 @@ import {
 import {AppStateType} from "../../Redux/redux-store";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from 'redux';
 
 type MapStatePropsType = {
 	users: UserType[]
@@ -43,7 +45,7 @@ class UsersContainer extends React.Component<UsersPropType> {
 		return <>
 			{this.props.isFetching
 				? <Preloader/>
-				: ''}
+				: null}
 
 			<Users
 				totalUsersCount={this.props.totalUsersCount}
@@ -70,10 +72,16 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
 	}
 }
 
-export default connect(mapStateToProps, {
-	follow,
-	unfollow,
-	setCurrentPage,
-	toggleFollowingProgress,
-	getUsers
-})(UsersContainer)
+// export default compose<ComponentType<{}>>(
+
+export default withAuthRedirect(connect(mapStateToProps, {
+		follow,
+		unfollow,
+		setCurrentPage,
+		toggleFollowingProgress,
+		getUsers
+	})(UsersContainer))
+	// withAuthRedirect
+// )()
+
+

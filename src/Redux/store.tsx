@@ -120,7 +120,7 @@ export type ActionsType =
 }*/
 
 // @ts-ignore
-window.store = store;
+// window.store = store;
 
 /*
 export default store*/
