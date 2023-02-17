@@ -1,12 +1,13 @@
 import {ActionsType, PostsType, ProfilePageType} from "./store";
 import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
-import {usersAPI} from "../api/api";
+import {profileAPI, usersAPI} from "../api/api";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
 
 const ADD_POST = "ADD-POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 const SET_USER_PROFILE = "SET-USER-PROFILE"
+const SET_STATUS = "SET-STATUS"
 
 const initialState: ProfilePageType = {
 	posts: [
@@ -14,7 +15,8 @@ const initialState: ProfilePageType = {
 		{id: 2, message: 'It is my first post', likesCount: 22}
 	],
 	newPostText: '',
-	profile: null
+	profile: null,
+	status: ''
 }
 
 const profileReducer = (state: ProfilePageType = initialState, action: ActionsType): ProfilePageType => {
@@ -38,6 +40,12 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
 				newPostText: action.newPostText
 			}
 		}
+		case SET_STATUS: {
+			return {
+				...state,
+				status: action.status
+			}
+		}
 		case SET_USER_PROFILE : {
 			return {
 				...state,
@@ -48,6 +56,8 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
 			return state
 	}
 }
+
+export const setStatusActionCreator = (status: string) => ({type: SET_STATUS, status} as const)
 
 export const addPostActionCreator = () => {
 	return {
@@ -78,6 +88,20 @@ export const getUserProfile = (userId: string): ThunkType => (dispatch: ThunkPro
 	usersAPI.getProfile(userId)
 		.then((response) => {
 			dispatch(setUserProfile(response.data))
+		})
+}
+
+export const getStatus = (userId: string): ThunkType => (dispatch: ThunkProfileDispatch) => {
+	profileAPI.getStatus(userId)
+		.then((response) => dispatch(setStatusActionCreator(response.data)))
+}
+
+export const updateStatus = (status: string): ThunkType => (dispatch: ThunkProfileDispatch) => {
+	profileAPI.updateStatus(status)
+		.then(response => {
+			if (response.data.resultCode === 0) {
+				dispatch(setStatusActionCreator(status))
+			}
 		})
 }
 

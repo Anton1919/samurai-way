@@ -1,4 +1,9 @@
-import {addPostActionCreator, setUserProfile, upDateNewPostTextActionCreator} from "./profile-reducer";
+import {
+	addPostActionCreator,
+	setStatusActionCreator,
+	setUserProfile,
+	upDateNewPostTextActionCreator
+} from "./profile-reducer";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "./dialogs-reducer";
 import {
 	followSuccess,
@@ -35,6 +40,7 @@ export type ProfilePageType = {
 	posts: PostsType[]
 	newPostText: string
 	profile: null | ProfileDataType
+	status: string
 }
 
 export type StateType = {
@@ -68,6 +74,7 @@ export type ActionsType =
 	| ReturnType<typeof setUserProfile>
 	| ReturnType<typeof setAuthUserData>
 	| ReturnType<typeof toggleFollowingProgress>
+| ReturnType<typeof setStatusActionCreator>
 
 /*const store: StoreType = {
 	_state: {
