@@ -18,6 +18,7 @@ class ProfileStatus extends React.Component<PropsType> {
 		})
 	}
 
+
 	deactivateEditMode = () => {
 		console.log('this.state',this)
 		this.setState({
