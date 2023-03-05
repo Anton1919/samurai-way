@@ -58,7 +58,6 @@ class ProfileContainer extends React.Component<PropsType> {
 	}
 
 
-
 	render() {
 
 		return (<div>
