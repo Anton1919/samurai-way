@@ -57,7 +57,6 @@ class ProfileContainer extends React.Component<PropsType> {
 		this.props.getStatus(userId)
 	}
 
-
 	render() {
 
 		return (<div>
@@ -71,7 +70,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
 	profile: state.profilePage.profile,
 	status: state.profilePage.status
 })
-
 
 export default withAuthRedirect(withRouter(connect(mapStateToProps, {
 	getUserProfile,
