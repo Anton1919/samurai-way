@@ -53,7 +53,6 @@ export const Login = () => {
 	})
 
 	if (isAuth) {
-		debugger
 		return <Redirect to={'/'}/>
 	}
 

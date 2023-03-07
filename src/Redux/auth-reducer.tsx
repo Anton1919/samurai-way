@@ -83,7 +83,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch: ThunkUsersDispa
 export const loginTC = (data: FormDataType): ThunkType => async (dispatch: ThunkUsersDispatch) => {
 	dispatch(setAppStatusAC('loading'))
 	try {
-		debugger
+
 		const res = await authAPI.login(data)
 		if (res.resultCode === 0) {
 			dispatch(setIsLoggedInAC(true))
