@@ -8,6 +8,10 @@ import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {loginTC} from "../../Redux/auth-reducer";
+import {useAppSelector} from "../../Redux/redux-store";
+import {Redirect} from "react-router-dom";
 
 type FormikErrorType = {
 	email?: string
@@ -15,8 +19,11 @@ type FormikErrorType = {
 	rememberMe?: boolean
 }
 
-
 export const Login = () => {
+
+	const error = useAppSelector(state => state.app.error)
+	const dispatch = useDispatch()
+	const isAuth = useAppSelector(state => state.auth.isAuth)
 
 	const formik = useFormik({
 		initialValues: {
@@ -40,10 +47,16 @@ export const Login = () => {
 			return errors
 		},
 		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2))
+			dispatch(loginTC(values))
 			formik.resetForm()
 		}
 	})
+
+	if (isAuth) {
+		debugger
+		return <Redirect to={'/'}/>
+	}
+
 	return <Grid container justifyContent={'center'}>
 		<Grid item justifyContent={'center'}>
 			<FormControl>
@@ -66,14 +79,19 @@ export const Login = () => {
 						/>
 
 						{formik.errors.email && formik.touched.email && <div style={{color: 'red'}}>{formik.errors.email}</div>}
+
 						<TextField
 							type="password"
 							label="Password"
 							margin="normal"
 							{...formik.getFieldProps('password')}
 						/>
+
 						{formik.errors.password && formik.touched.password &&
-                <div style={{color: 'red'}}>{formik.errors.password}</div>}
+                <div style={{color: 'red'}}>
+									{formik.errors.password}
+                </div>}
+
 						<FormControlLabel label={'Remember me'} control={
 							<Checkbox
 								checked={formik.values.rememberMe}
@@ -82,6 +100,7 @@ export const Login = () => {
 						<Button type={'submit'} variant={'contained'} color={'primary'}>
 							Login
 						</Button>
+						{error && <div>{error}</div>}
 					</FormGroup>
 				</form>
 			</FormControl>

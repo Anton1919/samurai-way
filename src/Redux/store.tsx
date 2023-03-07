@@ -14,8 +14,9 @@ import {
 	toggleIsFetching,
 	unFollowSuccess
 } from "./users-reducer";
-import {setAuthUserData} from "./auth-reducer";
+import {setAuthUserData, setIsInitializedAC, setIsLoggedInAC} from "./auth-reducer";
 import {ProfileDataType} from "../components/Profile/ProfileInfo/Profile.container";
+import {SetAppErrorActionType, SetAppStatusActionType} from "./app-reducer";
 
 export type PostsType = {
 	id: number
@@ -74,7 +75,11 @@ export type ActionsType =
 	| ReturnType<typeof setUserProfile>
 	| ReturnType<typeof setAuthUserData>
 	| ReturnType<typeof toggleFollowingProgress>
-| ReturnType<typeof setStatusActionCreator>
+	| ReturnType<typeof setStatusActionCreator>
+	| ReturnType<typeof setIsLoggedInAC>
+	| ReturnType<typeof setIsInitializedAC>
+	| SetAppErrorActionType
+	| SetAppStatusActionType
 
 /*const store: StoreType = {
 	_state: {

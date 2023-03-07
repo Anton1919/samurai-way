@@ -21,11 +21,25 @@ type unFollowResponseType = {
 	messages: [] | string[]
 }
 
+export type ResponseType<D = {}> = {
+	resultCode: number
+	messages: Array<string>
+	fieldsErrors: Array<string>
+	data: D
+}
+export type FormDataType = {
+	email: string
+	password: string
+	rememberMe: boolean
+}
+
 const instance = axios.create({
 	withCredentials: true,
 	baseURL: "https://social-network.samuraijs.com/api/1.0/",
 	headers: {"API-KEY": "82e04a93-e2e9-41a4-ac2e-ccde52c0a988"}
 })
+
+
 
 export const usersAPI = {
 	getUsers(currentPage = 1, pageSize = 10) {
@@ -66,6 +80,14 @@ export const profileAPI = {
 export const authAPI = {
 	me() {
 		return instance.get<ResponseHeaderType>(`auth/me`)
+	},
+	login(data: FormDataType) {
+		return instance.post<ResponseType<{ userID: number }>>('auth/login', data)
+			.then(res => res.data)
+	},
+	logout() {
+		return instance.delete<ResponseType>(`auth/login`)
+			.then(res => res.data)
 	}
 }
 
