@@ -23,12 +23,9 @@ export type ResponseHeaderType = {
 type HeaderContainerPropType = mapStateToProps & mapDispatchPropsType
 
 class HeaderContainer extends React.Component <HeaderContainerPropType> {
-	// componentDidMount() {
-	// 	this.props.getAuthUserData()
-	// }
 
 	render() {
-		return <Header {...this.props} />
+		return <Header/>
 	}
 }
 

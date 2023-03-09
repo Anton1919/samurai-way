@@ -3,7 +3,6 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogPageType} from "../../Redux/store";
-import {Redirect} from "react-router-dom";
 
 type DialogsPropsType = {
 	updateNewMessageBody: (body: string) => void
@@ -13,7 +12,7 @@ type DialogsPropsType = {
 }
 
 const Dialogs = (props: DialogsPropsType) => {
-	console.log('props', props)
+
 	const store = props.dialogsPage
 	const dialogsElements = store.dialogs.map(el =>
 		<DialogItem key={el.id} name={el.name} id={el.id}/>

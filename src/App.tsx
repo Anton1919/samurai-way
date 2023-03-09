@@ -3,8 +3,7 @@ import './App.css';
 import NavBar from "./components/Navbar/NavBar";
 import DialogsContainer from "./components/Dialogs/Dialogs-container";
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
-import Music from "./components/Music/Music";
-import News from "./components/News/News";
+
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileInfo/Profile.container";
@@ -14,7 +13,6 @@ import {useAppSelector} from "./Redux/redux-store";
 import {useDispatch} from "react-redux";
 import {getAuthUserData} from "./Redux/auth-reducer";
 import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
-
 
 const App = () => {
 
@@ -44,8 +42,6 @@ const App = () => {
 						<Route path="/dialogs" render={() => <DialogsContainer/>}/>
 						<Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
 						<Route path="/users" render={() => <UsersContainer/>}/>
-						<Route path="/news" component={News}/>
-						<Route path="/music" component={Music}/>
 						<Route path="/settings" component={Settings}/>
 
 						<Route path='/login' render={() => <Login/>}/>
