@@ -11,7 +11,6 @@ import ProfileContainer from "./components/Profile/ProfileInfo/Profile.container
 import HeaderContainer from "./components/Header/HeaderContainer";
 import {Login} from "./components/Login/Login";
 import {useAppSelector} from "./Redux/redux-store";
-import Preloader from "./components/common/Preloader/Preloader";
 import {useDispatch} from "react-redux";
 import {getAuthUserData} from "./Redux/auth-reducer";
 import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
