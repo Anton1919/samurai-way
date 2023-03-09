@@ -3,7 +3,6 @@ import {usersAPI} from "../api/api";
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AppStateType} from "./redux-store";
 
-
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET-USERS"
@@ -112,23 +111,20 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number) => 
 	isFetching, userId
 } as const)
 
-
-
-export const getUsers = (currentPage: number, pageSize: number): ThunkType => (dispatch: ThunkUsersDispatch) => {
+export const requestUsers = (page: number, pageSize: number): ThunkType => (dispatch: ThunkUsersDispatch) => {
 	dispatch(toggleIsFetching(true))
-	usersAPI.getUsers(currentPage, pageSize)
+	dispatch(setCurrentPage(page))
+	usersAPI.getUsers(page, pageSize)
 		.then((data) => {
 			dispatch(toggleIsFetching(false))
 			dispatch(setUsers(data.items))
 			dispatch(setTotalUsersCount(data.totalCount))
 		})
-
 }
 
 export const follow = (userId: number): ThunkType => {
 	return (dispatch: ThunkUsersDispatch) => {
 		dispatch(toggleFollowingProgress(true, userId))
-
 		usersAPI.follow(userId)
 			.then(data => {
 				if (data.resultCode === 0) {
