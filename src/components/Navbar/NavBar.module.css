@@ -5,11 +5,11 @@
     gap: 10px;
     width: 25%;
     background-color: rgb(247, 247, 247);
-    padding: 20px;
+    padding: 25px;
 }
 
 .item a {
-    font-size: 35px;
+    font-size: 25px;
     color: rgb(26, 26, 26);
     text-decoration: none;
 }

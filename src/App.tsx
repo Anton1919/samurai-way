@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import s from './App.module.css'
 import NavBar from "./components/Navbar/NavBar";
 import DialogsContainer from "./components/Dialogs/Dialogs-container";
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter, HashRouter, Redirect, Route, Switch} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileInfo/Profile.container";
@@ -31,7 +31,7 @@ const App = () => {
 	}
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<div className={s.appWrapper}>
 				<HeaderContainer/>
 
@@ -52,7 +52,7 @@ const App = () => {
 				</div>
 
 			</div>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 
