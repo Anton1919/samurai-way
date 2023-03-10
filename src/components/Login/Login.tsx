@@ -56,7 +56,7 @@ export const Login = () => {
 		return <Redirect to={'/'}/>
 	}
 
-	return <Grid container justifyContent={'center'}>
+	return <Grid container justifyContent={'center'} >
 		<Grid item justifyContent={'center'}>
 			<FormControl>
 				<FormLabel>

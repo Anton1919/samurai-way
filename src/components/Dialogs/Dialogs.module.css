@@ -1,25 +1,64 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.dialogs a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+a.active  {
+    color: #61dafb;
+    font-weight: bold;
+}
+
+.dialogs a:hover {
+    color: #61dafb;
 }
 
 .dialogsItems {
-    padding: 10px;
-
+    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 50px;
 }
 
-.dialogsItems .active {
-    color: gold;
-}
 
-.dialog {
-    color: white;
-}
-
-.messages {
-    padding: 10px;
+.messagesElements {
+    margin-top: 30px;
 }
 
 .message {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+.dialogs textarea {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    width: 100%;
+    padding: 15px;
+    resize: none;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.05);
+    height: 150px;
+    outline: none;
+}
+
+.dialogs button {
+    margin-left: 10px;
+    font-size: 13px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(161, 158, 158);
     color: white;
+    cursor: pointer;
 }

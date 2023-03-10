@@ -1,9 +1,28 @@
 .item {
-    color: greenyellow;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
 }
 
 .item img {
     width: 50px;
     height: 50px;
     border-radius: 30px;
+    margin-right: 10px;
+}
+
+.descr {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.message{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.item span {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(26, 26, 26);
 }

@@ -1,3 +1,14 @@
 .descriptionBlock {
+    padding: 20px;
+}
+
+.descriptionBlock img {
+    width: 20rem;
+    border-radius: 15px;
+}
+.name {
+    font-size: 20px;
+    font-weight: bold;
     padding: 10px;
+    text-transform: uppercase;
 }

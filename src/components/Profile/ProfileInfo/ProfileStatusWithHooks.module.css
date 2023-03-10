@@ -1,0 +1,31 @@
+.status {
+    padding: 5px;
+    font-size: 15px;
+    cursor: pointer;
+
+    border-radius: 5px;
+
+}
+
+.status input {
+    height: 30px;
+    font-size: 17px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    outline: none;
+
+}
+
+.status button {
+    margin-left: 10px;
+    font-size: 13px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(161, 158, 158);
+    color: white;
+    cursor: pointer;
+}

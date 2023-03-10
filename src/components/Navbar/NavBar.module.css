@@ -1,14 +1,24 @@
 .nav {
-    grid-area: n;
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 25%;
+    background-color: rgb(247, 247, 247);
     padding: 20px;
 }
 
 .item a {
-    color: white;
+    font-size: 35px;
+    color: rgb(26, 26, 26);
     text-decoration: none;
 }
 
 .item a.active {
-    color: gold;
+    color: #61dafb;
+    font-weight: bold;
+}
+.item a:hover {
+    color: #61dafb;
+    font-weight: bold;
 }

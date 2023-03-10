@@ -1,0 +1,20 @@
+.appWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.appWrapperContent {
+    display: flex;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.content {
+    width: 100%;
+}
+
+
+

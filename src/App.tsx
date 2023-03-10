@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import s from './App.module.css'
 import NavBar from "./components/Navbar/NavBar";
 import DialogsContainer from "./components/Dialogs/Dialogs-container";
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
-
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileInfo/Profile.container";
@@ -13,6 +12,7 @@ import {useAppSelector} from "./Redux/redux-store";
 import {useDispatch} from "react-redux";
 import {getAuthUserData} from "./Redux/auth-reducer";
 import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
+import page404 from './assets/img/404.jpg'
 
 const App = () => {
 
@@ -32,27 +32,25 @@ const App = () => {
 
 	return (
 		<BrowserRouter>
-			<div className="app-wrapper">
+			<div className={s.appWrapper}>
 				<HeaderContainer/>
-				<NavBar/>
 
-				<div className="app-wrapper-content">
-
-					<Switch>
-						<Route path="/dialogs" render={() => <DialogsContainer/>}/>
-						<Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-						<Route path="/users" render={() => <UsersContainer/>}/>
-						<Route path="/settings" component={Settings}/>
-
-						<Route path='/login' render={() => <Login/>}/>
-						<Route exact path='/' render={() => <ProfileContainer/>}/>
-
-						<Route path='/404' component={() => <h1>PAGE NOT FOUND</h1>}/>
-						<Redirect from={'*'} to={'/404'}/>
-
-					</Switch>
-
+				<div className={s.appWrapperContent}>
+					<NavBar/>
+					<div className={s.content}>
+						<Switch>
+							<Route path="/dialogs" render={() => <DialogsContainer/>}/>
+							<Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+							<Route path="/users" render={() => <UsersContainer/>}/>
+							<Route path="/settings" component={Settings}/>
+							<Route path='/login' render={() => <Login/>}/>
+							<Route exact path='/' render={() => <ProfileContainer/>}/>
+							<Route path='/404' component={() => <img style={{width: "70%"}} src={page404}/>}/>
+							<Redirect from={'*'} to={'/404'}/>
+						</Switch>
+					</div>
 				</div>
+
 			</div>
 		</BrowserRouter>
 	);
