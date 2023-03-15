@@ -15,7 +15,6 @@ import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
 import page404 from './assets/img/404.jpg'
 
 const App = () => {
-
 	const isInitialized = useAppSelector<boolean>((state) => state.auth.isInitialized)
 	const dispatch = useDispatch()
 
