@@ -33,7 +33,6 @@ const App = () => {
 		<HashRouter>
 			<div className={s.appWrapper}>
 				<HeaderContainer/>
-
 				<div className={s.appWrapperContent}>
 					<NavBar/>
 					<div className={s.content}>
