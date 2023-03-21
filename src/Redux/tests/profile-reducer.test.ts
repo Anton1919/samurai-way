@@ -17,13 +17,13 @@ beforeEach(() => {
 test("post text should be updated", () => {
 	const action = upDateNewPostTextActionCreator("some string")
 	const newState = profileReducer(initialState, action)
-	expect(newState.newPostText).toBe("some string")
+	expect(newState.newPostText).toEqual("some string")
 })
 
 test("new post should be added", () => {
 	const action = addPostActionCreator()
 	const newState = profileReducer(initialState, action)
 	expect(newState.posts.at(-1)?.likesCount).toBe(0)
-	expect(newState.posts.at(-1)?.message).toBe("")
+	expect(newState.posts.at(-1)?.message).toEqual("")
 })
 
