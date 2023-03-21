@@ -10,37 +10,36 @@ type MyPostPropsType = {
 	addPost: () => void
 }
 
-const MyPosts = (props: MyPostPropsType) => {
+const MyPosts = React.memo((props: MyPostPropsType) => {
+		const postsElemets = props.posts.map(el =>
+			<Post key={el.id} message={el.message} likesCount={el.likesCount}/>
+		)
 
-	const postsElemets = props.posts.map(el =>
-		<Post key={el.id} message={el.message} likesCount={el.likesCount}/>
-	)
+		const onAddPost = () => {
+			props.addPost()
+		}
 
-	const onAddPost = () => {
-		 props.addPost()
-	}
+		const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+			props.updateNewPostText(e.currentTarget.value)
+		}
 
-	const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		 props.updateNewPostText(e.currentTarget.value)
-	}
-
-	return (
-		<div className={s.postsBlock}>
-			<h3>My posts</h3>
-			<div>
+		return (
+			<div className={s.postsBlock}>
+				<h3>My posts</h3>
 				<div>
-					<textarea onChange={onPostChange}
-										value={props.newPostText}/>
-				</div>
-				<div>
-					<button onClick={onAddPost}>Add post</button>
-				</div>
-				<div className={s.posts}>
-					{postsElemets}
+					<div>
+						<textarea onChange={onPostChange} value={props.newPostText}/>
+					</div>
+					<div>
+						<button onClick={onAddPost}>Add post</button>
+					</div>
+					<div className={s.posts}>
+						{postsElemets}
+					</div>
 				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+)
 
 export default MyPosts;
