@@ -1,7 +1,7 @@
 import {ActionsType, DialogPageType} from "./store";
 
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
-const SEND_MESSAGE = 'SEND_MESSAGE'
+const UPDATE_NEW_MESSAGE_BODY = 'dialogs/UPDATE_NEW_MESSAGE_BODY'
+const SEND_MESSAGE = 'dialogs/SEND_MESSAGE'
 
 const initialState: DialogPageType = {
 	dialogs: [
@@ -22,11 +22,7 @@ const initialState: DialogPageType = {
 	newMessageBody: ''
 }
 
-
-// type ActionType =  ReturnType<typeof updateNewMessageBodyCreator> |ReturnType<typeof sendMessageCreator>
-
 const dialogsReducer = (state: DialogPageType = initialState, action: ActionsType) => {
-
 	switch (action.type) {
 		case UPDATE_NEW_MESSAGE_BODY:
 			return {
