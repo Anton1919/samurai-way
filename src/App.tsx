@@ -43,7 +43,7 @@ const App = () => {
 							<Route path="/settings" component={Settings}/>
 							<Route path='/login' render={() => <Login/>}/>
 							<Route exact path='/' render={() => <ProfileContainer/>}/>
-							<Route path='/404' component={() => <img style={{width: "70%"}} src={page404}/>}/>
+							<Route path='/404' component={() => <img style={{width: "70%"}} src={page404} alt={"img"}/>}/>
 							<Redirect from={'*'} to={'/404'}/>
 						</Switch>
 					</div>

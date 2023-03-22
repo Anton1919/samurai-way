@@ -11,25 +11,6 @@
     border-radius: 15px;
 }
 
-.pages {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 50px;
-    padding: 10px;
-}
-
-.pages a{
-    cursor: pointer;
-    font-size: 22px;
-    font-weight: 700;
-    margin: 2px;
-}
-
-.selectedPage {
-    color: #61dafb;
-}
-
 .btn {
     margin-top: 10px;
     font-size: 13px;
