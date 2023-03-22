@@ -21,7 +21,6 @@ import {
 	getUsers,
 } from "../../Redux/users-selectors";
 
-
 type MapStatePropsType = {
 	users: UserType[]
 	pageSize: number
@@ -44,7 +43,6 @@ class UsersContainer extends React.Component<UsersPropType> {
 	componentDidMount() {
 		this.props.requestUsers(this.props.currentPage, this.props.pageSize)
 	}
-
 	onPageChanged = (pageNumber: number) => {
 		this.props.requestUsers(pageNumber, this.props.pageSize)
 	}
@@ -57,7 +55,6 @@ class UsersContainer extends React.Component<UsersPropType> {
 					<Preloader/>
 					: null
 			}
-
 			<Users
 				totalUsersCount={this.props.totalUsersCount}
 				currentPage={this.props.currentPage}

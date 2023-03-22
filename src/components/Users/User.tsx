@@ -12,13 +12,11 @@ type UserPropsType = {
 }
 
 const User = ({user, followingInProgress, follow, unfollow}: UserPropsType) => {
-
 	return (
 		<div className={s.usersInfo}>
 			<NavLink to={'/profile/' + user.id}>
-				<img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto}/>
+				<img className={s.userPhoto} src={user.photos.small != null ? user.photos.small : userPhoto} alt={"img"}/>
 			</NavLink>
-
 			<div className={s.info}>
 				<div>
 					<div className={s.about}> Name: {user.name}</div>
@@ -38,7 +36,6 @@ const User = ({user, followingInProgress, follow, unfollow}: UserPropsType) => {
 											onClick={() => follow(user.id)}>Follow</button>}
 				</div>
 			</div>
-
 		</div>
 	)
 };
