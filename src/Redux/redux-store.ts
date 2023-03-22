@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
@@ -7,7 +7,6 @@ import authReducer from "./auth-reducer";
 import thunkMiddleware from 'redux-thunk'
 import {appReducer} from "./app-reducer";
 import {TypedUseSelectorHook, useSelector} from "react-redux";
-
 
 const reducers = combineReducers({
 	profilePage: profileReducer,

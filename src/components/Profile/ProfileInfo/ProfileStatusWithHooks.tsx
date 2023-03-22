@@ -7,7 +7,6 @@ type PropsType = {
 }
 
 const ProfileStatusWithHooks = (props: PropsType) => {
-
 	const [editMode, setEditMode] = useState(false)
 	const [status, setStatus] = useState(props.status)
 
@@ -18,12 +17,10 @@ const ProfileStatusWithHooks = (props: PropsType) => {
 	const activateMode = () => {
 		setEditMode(true)
 	}
-
 	const deActivateMode = () => {
 		setEditMode(false)
 		props.updateStatus(status)
 	}
-
 	const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setStatus(e.currentTarget.value)
 	}
@@ -32,7 +29,8 @@ const ProfileStatusWithHooks = (props: PropsType) => {
 		<div className={s.status}>
 			{!editMode &&
           <div>
-            <span onDoubleClick={activateMode}>{props.status || "NO STATUS"}</span> <button onClick={activateMode}>Change status</button>
+              <span onDoubleClick={activateMode}>{props.status || "NO STATUS"}</span>
+              <button onClick={activateMode}>Change status</button>
           </div>}
 			{editMode &&
           <div>
