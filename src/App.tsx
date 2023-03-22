@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import s from './App.module.css'
 import NavBar from "./components/Navbar/NavBar";
 import DialogsContainer from "./components/Dialogs/Dialogs-container";
-import {BrowserRouter, HashRouter, Redirect, Route, Switch} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileInfo/Profile.container";
