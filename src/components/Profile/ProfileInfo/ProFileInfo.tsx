@@ -10,6 +10,7 @@ type ProfileInfoType = {
 	status: string
 	updateStatus: (status: string) => void
 }
+
 const ProFileInfo = (props: ProfileInfoType) => {
 
 	if (!props.profile) {
@@ -19,7 +20,11 @@ const ProFileInfo = (props: ProfileInfoType) => {
 	return (
 		<div>
 			<div className={s.descriptionBlock}>
-				{props.profile.photos && props.profile.photos.large ? <img src={props.profile.photos.large} alt="img"/> : <img src={photo} alt='img' />}
+				{props.profile.photos &&
+				props.profile.photos.large
+					? <img src={props.profile.photos.large} alt="img"/>
+					: <img src={photo} alt='img'
+					/>}
 				<div className={s.name}>{props.profile.fullName}</div>
 				<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 			</div>
