@@ -1,5 +1,5 @@
 import {
-	addPostActionCreator,
+	addPostActionCreator, savePhotoSuccsess,
 	setStatusActionCreator,
 	setUserProfile,
 	upDateNewPostTextActionCreator
@@ -40,7 +40,7 @@ export type DialogPageType = {
 export type ProfilePageType = {
 	posts: PostsType[]
 	newPostText: string
-	profile: null | ProfileDataType
+	profile: ProfileDataType
 	status: string
 }
 
@@ -78,6 +78,7 @@ export type ActionsType =
 	| ReturnType<typeof setStatusActionCreator>
 	| ReturnType<typeof setIsLoggedInAC>
 	| ReturnType<typeof setIsInitializedAC>
+	| ReturnType<typeof savePhotoSuccsess>
 	| SetAppErrorActionType
 	| SetAppStatusActionType
 

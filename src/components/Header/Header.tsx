@@ -14,7 +14,7 @@ const Header = () => {
 				<img
 					src={svg}
 					alt="img"/>
-				<h1>Samurai social media </h1>
+				<h1>Samurai</h1>
 			</div>
 
 			<div className={s.loginBlock}>

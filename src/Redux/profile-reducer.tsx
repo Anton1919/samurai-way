@@ -8,6 +8,7 @@ const ADD_POST = "profile/ADD-POST"
 const UPDATE_NEW_POST_TEXT = "profile/UPDATE-NEW-POST-TEXT"
 const SET_USER_PROFILE = "profile/SET-USER-PROFILE"
 const SET_STATUS = "profile/SET-STATUS"
+const SAVE_USER_PHOTO = "profile/SET-USER-PHOTO"
 
 const initialState: ProfilePageType = {
 	posts: [
@@ -15,8 +16,28 @@ const initialState: ProfilePageType = {
 		{id: 2, message: 'It is my first post', likesCount: 22}
 	],
 	newPostText: '',
-	profile: null,
-	status: ''
+	profile: {
+		aboutMe:null,
+		contacts: {
+			facebook: null,
+			website: null,
+			vk: null,
+			twitter: null,
+			instagram: null,
+			youtube: null,
+			github: null,
+			mainLink: null,
+		},
+		lookingForAJob: false,
+		lookingForAJobDescription:null,
+		fullName: null,
+		userId: 0,
+		photos: {
+			small: null,
+			large: null
+		}
+	},
+	status: '',
 }
 
 const profileReducer = (state: ProfilePageType = initialState, action: ActionsType): ProfilePageType => {
@@ -51,6 +72,12 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
 				profile: action.profile
 			}
 		}
+		case SAVE_USER_PHOTO : {
+			return {
+				...state,
+				profile: {...state.profile, photos: action.photos?action.photos:{small:null, large:null}}
+			}
+		}
 		default:
 			return state
 	}
@@ -77,6 +104,15 @@ export const setUserProfile = (profile: ProfileDataType) => {
 	} as const
 }
 
+export const savePhotoSuccsess = (photos: {
+	small: string | null
+	large: string | null
+}) => {
+	return {
+		type: SAVE_USER_PHOTO, photos
+	} as const
+}
+
 type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsType>
 type ThunkProfileDispatch = ThunkDispatch<AppStateType, unknown, ActionsType>
 
@@ -94,6 +130,12 @@ export const updateStatus = (status: string): ThunkType => async (dispatch: Thun
 	const response = await profileAPI.updateStatus(status)
 	if (response.data.resultCode === 0) {
 		dispatch(setStatusActionCreator(status))
+	}
+}
+export const savePhoto = (file: string): ThunkType => async (dispatch: ThunkProfileDispatch) => {
+	const response = await profileAPI.savePhoto(file)
+	if (response.data.resultCode === 0) {
+		dispatch(savePhotoSuccsess(response.data.data.photos))
 	}
 }
 

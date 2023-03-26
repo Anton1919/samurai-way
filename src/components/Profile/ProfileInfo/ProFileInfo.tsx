@@ -9,12 +9,19 @@ type ProfileInfoType = {
 	profile: ProfileDataType | null
 	status: string
 	updateStatus: (status: string) => void
+	isOwner?: boolean
+	savePhoto?: any
 }
 
 const ProFileInfo = (props: ProfileInfoType) => {
-
 	if (!props.profile) {
 		return <Preloader/>
+	}
+
+	const onMainPhotoSelected = (e: any) => {
+		if (e.target?.files) {
+			props.savePhoto(e.target.files[0])
+		}
 	}
 
 	return (
@@ -26,6 +33,12 @@ const ProFileInfo = (props: ProfileInfoType) => {
 					: <img src={photo} alt='img'
 					/>}
 				<div className={s.name}>{props.profile.fullName}</div>
+				{props.isOwner &&
+            <label className={s.customFileUpload}>
+                <input type="file" onChange={onMainPhotoSelected}/>
+                Choose file to change photo
+            </label>
+				}
 				<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 			</div>
 		</div>

@@ -3,7 +3,7 @@
 }
 
 .descriptionBlock img {
-    width: 20rem;
+    width: 200px;
     border-radius: 15px;
 }
 .name {
@@ -11,4 +11,19 @@
     font-weight: bold;
     padding: 10px;
     text-transform: uppercase;
+}
+
+.customFileUpload {
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
 }
