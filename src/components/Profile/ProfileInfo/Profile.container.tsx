@@ -37,7 +37,6 @@ export type MapStatePropsType = {
 	isOwner?: boolean
 	savePhoto?: any
 }
-
 type MapDispatchPropsType = {
 	getUserProfile: (userId: string) => void
 	getStatus: (userId: string) => void

@@ -84,26 +84,22 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
 }
 
 export const setStatusActionCreator = (status: string) => ({type: SET_STATUS, status} as const)
-
 export const addPostActionCreator = () => {
 	return {
 		type: ADD_POST,
 	} as const
 }
-
 export const upDateNewPostTextActionCreator = (text: string) => {
 	return {
 		type: UPDATE_NEW_POST_TEXT,
 		newPostText: text
 	} as const
 }
-
 export const setUserProfile = (profile: ProfileDataType) => {
 	return {
 		type: SET_USER_PROFILE, profile
 	} as const
 }
-
 export const savePhotoSuccsess = (photos: {
 	small: string | null
 	large: string | null
@@ -120,12 +116,10 @@ export const getUserProfile = (userId: string): ThunkType => async (dispatch: Th
 	const response = await usersAPI.getProfile(userId)
 	dispatch(setUserProfile(response.data))
 }
-
 export const getStatus = (userId: string): ThunkType => async (dispatch: ThunkProfileDispatch) => {
 	const response = await profileAPI.getStatus(userId)
 	dispatch(setStatusActionCreator(response.data))
 }
-
 export const updateStatus = (status: string): ThunkType => async (dispatch: ThunkProfileDispatch) => {
 	const response = await profileAPI.updateStatus(status)
 	if (response.data.resultCode === 0) {
