@@ -20,7 +20,6 @@ type FormikErrorType = {
 }
 
 export const Login = () => {
-
 	const error = useAppSelector(state => state.app.error)
 	const dispatch = useDispatch()
 	const isAuth = useAppSelector(state => state.auth.isAuth)
@@ -56,7 +55,7 @@ export const Login = () => {
 		return <Redirect to={'/'}/>
 	}
 
-	return <Grid container justifyContent={'center'} >
+	return <Grid container justifyContent={'center'}>
 		<Grid item justifyContent={'center'}>
 			<FormControl>
 				<FormLabel>

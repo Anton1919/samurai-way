@@ -7,15 +7,16 @@
 .header h1 {
     color: #61dafb;
     font-size: 20px;
-
 }
+
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 20%;
     margin: 0px 10px;
 }
+
 .header img {
     padding: 10px 10px;
     width: 60px;
